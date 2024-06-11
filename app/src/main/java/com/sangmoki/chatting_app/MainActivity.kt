@@ -2,6 +2,7 @@ package com.sangmoki.chatting_app
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -38,34 +39,50 @@ class MainActivity : AppCompatActivity() {
         val currentUser = auth.currentUser
 
         // 로그인 버튼 객체 생성
-        val login_button = findViewById<Button>(R.id.login_button_main)
+        val login_button = findViewById<Button>(R.id.login_button)
 
         // 회원가입 버튼 객체 생성
         val join_button = findViewById<Button>(R.id.join_button)
 
+
+        // 이메일 비밀번호 입력 값
+        var email = ""
+        var password = ""
+
+        email = findViewById<EditText>(R.id.email_area).text.toString()
+        password = findViewById<EditText>(R.id.password_area).text.toString()
+
         // 로그인 버튼 클릭 이벤트
         login_button.setOnClickListener {
-            val intent = Intent(this, LoginActivity::class.java)
-            startActivity(intent)
+
+            auth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this) { task ->
+                    if (task.isSuccessful) {
+                        Log.d(TAG, "로그인 성공")
+                        val user = auth.currentUser
+                    } else {
+                        // If sign in fails, display a message to the user.
+                        Log.w(TAG, "로그인 실패", task.exception)
+                        Toast.makeText(
+                            baseContext,
+                            "로그인 실패",
+                            Toast.LENGTH_SHORT,
+                        ).show()
+                    }
+                }
+
         }
 
         // 회원가입 버튼 클릭 이벤트
         join_button.setOnClickListener {
 
-            // 이메일 비밀번호 입력 값
-            var email = ""
-            var password = ""
-
-            email = findViewById<EditText>(R.id.email_area).text.toString()
-            password = findViewById<EditText>(R.id.password_area).text.toString()
-
             // 회원가입 시 이벤트
             auth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
-
-
+                        Log.d(TAG, "회원가입 성공")
                     } else {
+                        Log.d(TAG, "실패")
                     }
                 }
 
