@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "173087124461",
+    "project_id": "chatting-app-bccdf",
+    "storage_bucket": "chatting-app-bccdf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:173087124461:android:0b8e76487562862cb8d5e4",
+        "android_client_info": {
+          "package_name": "com.sangmoki.chatting_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDQnneLvhS0fS8-2oj8QpWsAWJkD5u8J1o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
