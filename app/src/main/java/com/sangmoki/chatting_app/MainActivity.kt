@@ -55,6 +55,7 @@ class MainActivity : AppCompatActivity() {
         // 로그인 버튼 클릭 이벤트
         login_button.setOnClickListener {
 
+            // 로그인 이벤트 -> 성공 시 로그인 성공 실패 시 로그인 실패
             auth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
@@ -76,7 +77,7 @@ class MainActivity : AppCompatActivity() {
         // 회원가입 버튼 클릭 이벤트
         join_button.setOnClickListener {
 
-            // 회원가입 시 이벤트
+            // 신규 회원일 경우 회원가입 성공, 이미 있을 경우 실패
             auth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
