@@ -12,7 +12,9 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
+import com.sangmoki.chatting_app.Model.User
 
 class MainActivity : AppCompatActivity() {
 
@@ -60,7 +62,19 @@ class MainActivity : AppCompatActivity() {
 
                     if (task.isSuccessful) {
 
-                        // DB에 유저 정보를 넣어주어야 한다.
+                        val uid = FirebaseAuth.getInstance().uid ?: ""
+                        val user = User(uid, email)
+
+                        // DB 객체 생성
+                        val db = FirebaseFirestore.getInstance().collection("users")
+                        db.document(auth.uid.toString())
+                            .set(user)
+                            .addOnCompleteListener {
+                                // 성공한 경우
+                            }
+                            .addOnFailureListener {
+                                // 실패한 경우
+                            }
 
                         // 로그인이 성공하면 채팅 액티비티로 이동한다.
                         val intent = Intent(this, ChatListActivity::class.java)
