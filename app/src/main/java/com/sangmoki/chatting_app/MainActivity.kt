@@ -58,16 +58,9 @@ class MainActivity : AppCompatActivity() {
             auth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this) { task ->
 
-                    Log.d("이메일 ======", email)
-                    Log.d("비밀번호 ======", password)
-
                     if (task.isSuccessful) {
 
-                        Toast.makeText(
-                            baseContext,
-                            "로그인 성공",
-                            Toast.LENGTH_SHORT,
-                        ).show()
+                        // DB에 유저 정보를 넣어주어야 한다.
 
                         // 로그인이 성공하면 채팅 액티비티로 이동한다.
                         val intent = Intent(this, ChatListActivity::class.java)
