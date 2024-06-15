@@ -44,22 +44,30 @@ class MainActivity : AppCompatActivity() {
         // 회원가입 버튼 객체 생성
         val join_button = findViewById<Button>(R.id.join_button)
 
-
         // 이메일 비밀번호 입력 값
         var email = ""
         var password = ""
 
-        email = findViewById<EditText>(R.id.email_area).text.toString()
-        password = findViewById<EditText>(R.id.password_area).text.toString()
-
         // 로그인 버튼 클릭 이벤트
         login_button.setOnClickListener {
+
+            email = findViewById<EditText>(R.id.email_area).text.toString()
+            password = findViewById<EditText>(R.id.password_area).text.toString()
 
             // 로그인 이벤트 -> 성공 시 로그인 성공 실패 시 로그인 실패
             auth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this) { task ->
+
+                    Log.d("이메일 ======", email)
+                    Log.d("비밀번호 ======", password)
+
                     if (task.isSuccessful) {
-                        Log.d(TAG, "로그인 성공")
+
+                        Toast.makeText(
+                            baseContext,
+                            "로그인 성공",
+                            Toast.LENGTH_SHORT,
+                        ).show()
 
                         // 로그인이 성공하면 채팅 액티비티로 이동한다.
                         val intent = Intent(this, ChatListActivity::class.java)
@@ -68,7 +76,6 @@ class MainActivity : AppCompatActivity() {
                         startActivity(intent)
 
                     } else {
-                        // If sign in fails, display a message to the user.
                         Log.w(TAG, "로그인 실패", task.exception)
                         Toast.makeText(
                             baseContext,
@@ -83,18 +90,29 @@ class MainActivity : AppCompatActivity() {
         // 회원가입 버튼 클릭 이벤트
         join_button.setOnClickListener {
 
+            email = findViewById<EditText>(R.id.email_area).text.toString()
+            password = findViewById<EditText>(R.id.password_area).text.toString()
+
             // 신규 회원일 경우 회원가입 성공, 이미 있을 경우 실패
             auth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
-                        Log.d(TAG, "회원가입 성공")
+                        Toast.makeText(
+                            baseContext,
+                            "회원가입 성공",
+                            Toast.LENGTH_SHORT,
+                        ).show()
 
                         // 회원가입이 성공하면 채팅 액티비티로 이동한다.
                         val intent = Intent(this, ChatListActivity::class.java)
                         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                         startActivity(intent)
                     } else {
-                        Log.d(TAG, "실패")
+                        Toast.makeText(
+                            baseContext,
+                            "회원가입 실패",
+                            Toast.LENGTH_SHORT,
+                        ).show()
                     }
                 }
 
