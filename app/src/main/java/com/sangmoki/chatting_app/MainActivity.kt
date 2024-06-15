@@ -60,7 +60,13 @@ class MainActivity : AppCompatActivity() {
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
                         Log.d(TAG, "로그인 성공")
-                        val user = auth.currentUser
+
+                        // 로그인이 성공하면 채팅 액티비티로 이동한다.
+                        val intent = Intent(this, ChatListActivity::class.java)
+                        // 새 탭으로 이동할 때 Flag를 지워주어야 한다.
+                        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                        startActivity(intent)
+
                     } else {
                         // If sign in fails, display a message to the user.
                         Log.w(TAG, "로그인 실패", task.exception)
@@ -82,6 +88,11 @@ class MainActivity : AppCompatActivity() {
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
                         Log.d(TAG, "회원가입 성공")
+
+                        // 회원가입이 성공하면 채팅 액티비티로 이동한다.
+                        val intent = Intent(this, ChatListActivity::class.java)
+                        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                        startActivity(intent)
                     } else {
                         Log.d(TAG, "실패")
                     }
