@@ -67,13 +67,16 @@ class MainActivity : AppCompatActivity() {
 
                         // DB 객체 생성
                         val db = FirebaseFirestore.getInstance().collection("users")
+                        // DB에 유저 정보 저장
                         db.document(auth.uid.toString())
                             .set(user)
                             .addOnCompleteListener {
                                 // 성공한 경우
+                                Log.d(TAG, "DB 저장 성공")
                             }
                             .addOnFailureListener {
                                 // 실패한 경우
+                                Log.d(TAG, "DB 저장 실패")
                             }
 
                         // 로그인이 성공하면 채팅 액티비티로 이동한다.
