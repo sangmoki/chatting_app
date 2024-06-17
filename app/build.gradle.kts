@@ -48,6 +48,9 @@ dependencies {
     // firebase firestore
     implementation("com.google.firebase:firebase-firestore")
 
+    // groupy -> RecyclerView Adapter 라이브러리
+    implementation ("com.github.lisawray.groupie:groupie:2.10.1")
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
@@ -56,4 +59,5 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
 }
