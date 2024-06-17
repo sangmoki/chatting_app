@@ -50,6 +50,7 @@ dependencies {
 
     // groupy -> RecyclerView Adapter 라이브러리
     implementation ("com.github.lisawray.groupie:groupie:2.10.1")
+    implementation ("com.github.lisawray.groupie:groupie-viewbinding:2.10.1")
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
