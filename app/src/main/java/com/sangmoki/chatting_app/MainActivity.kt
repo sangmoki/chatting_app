@@ -65,10 +65,13 @@ class MainActivity : AppCompatActivity() {
                         val uid = FirebaseAuth.getInstance().uid ?: ""
                         val user = User(uid, email)
 
+                        Log.d("User===========", user.toString())
+
                         // DB 객체 생성
                         val db = FirebaseFirestore.getInstance().collection("users")
+
                         // DB에 유저 정보 저장
-                        db.document(auth.uid.toString())
+                        db.document(uid)
                             .set(user)
                             .addOnCompleteListener {
                                 // 성공한 경우
