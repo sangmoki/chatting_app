@@ -5,7 +5,9 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.sangmoki.chatting_app.Model.UserChatItem
 
 class ChatListActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,9 +21,9 @@ class ChatListActivity : AppCompatActivity() {
         }
 
         val rvAdapter = findViewById<RecyclerView>(R.id.rv_list)
-        val adapter = GroupieAdapter()
+//        val adapter = GroupieAdapter()
 
-        rvAdapter.adapter = adapter
+//        rvAdapter.adapter = adapter
 
     }
 }

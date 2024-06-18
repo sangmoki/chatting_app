@@ -5,8 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.sangmoki.chatting_app.Model.Chat
 
-class RvAdapter(val items : MutableList<String>) : RecyclerView.Adapter<RvAdapter.ViewHolder>() {
+class RvAdapter(val chat: Chat) : RecyclerView.Adapter<RvAdapter.ViewHolder>() {
 
     // 각 RecyclerView의 아이템 뿌려주기
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RvAdapter.ViewHolder {
@@ -16,12 +17,12 @@ class RvAdapter(val items : MutableList<String>) : RecyclerView.Adapter<RvAdapte
 
     // ViewHolder의 데이터 바인딩 처리
     override fun onBindViewHolder(holder: RvAdapter.ViewHolder, position: Int) {
-        holder.bindItems(items[position])
+        holder.bindItems(chat[position])
     }
 
     // 전체 RecyclerView 개수
-    override fun getItemCount(): Int {
-        return items.size
+    override fun getItemCount(): Chat {
+        return chat
     }
 
     // ViewHolder 생성

@@ -48,6 +48,10 @@ dependencies {
     // firebase firestore
     implementation("com.google.firebase:firebase-firestore")
 
+    // groupie 라이브러리
+    implementation("com.github.lisawray.groupie:groupie:2.10.0")
+    implementation("com.github.lisawray.groupie:groupie-viewbinding:2.10.0")
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
